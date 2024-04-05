@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Paolo Navarro</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <title>Paolo Navarro</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/rFTwRsGW/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://kit.fontawesome.com/f6d993944f.js" crossorigin="anonymous"></script>
+
+    <!-- Custom styles -->
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+
+        #sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            padding-top: 20px;
+            transition: width 0.5s;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra horizontalmente */
+        }
+
+
+        #sidebar #profile-container {
+            text-align: center;
+            margin-bottom: 20px; /* Espacio entre la imagen y el nombre */
+        }
+
+        #sidebar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #sidebar h4 {
+            text-align: center;
+            margin: 0; /* Elimina el margen predeterminado del h4 */
+        }
+
+        #main-content {
+            flex: 1;
+            padding: 20px;
+            transition: margin-left 0.5s;
+            margin-left: 250px;
+        }
+
+        #menu-options {
+            list-style: none;
+            padding: 0;
+            padding-left: 10px;
+
+        }
+
+        #menu-options li {
+            margin-bottom: 10px;
+        }
+
+        #project-icons {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Ajuste para hacer clic en las imágenes del carrusel */
+        .carousel-inner img:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        #sidebarCollapse {
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+
+        #menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 1;
+            color: #fff;
+        }
+
+        
+
+
+        #menu-options a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        #menu-options a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        section {
+            border-bottom: 1px solid #ddd; /* Línea divisoria entre secciones */
+            padding-bottom: 20px; /* Espacio entre la sección y la línea divisoria */
+        }
+
+        section:last-child {
+            border-bottom: none; /* No agregar línea divisoria en la última sección */
+        }
+        .about-me-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .additional-info {
+            margin-top: 20px;
+        }
+
+        .additional-info p {
+            margin: 8px 0;
+        }
+
+        .additional-info strong {
+            color: #3498db; /* Color azul, puedes ajustarlo según tus preferencias */
+        }
+
+        .contact-info-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .contact-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-links li {
+            margin-bottom: 10px;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-links a i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const menuOptions = document.querySelectorAll('#menu-options a');
+
+            menuOptions.forEach(option => {
+                option.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        const yOffset = -60; // Ajusta este valor según tu diseño
+                        const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="container">
+
+
+<div id="sidebar">
+    <!-- Botón para colapsar/desplegar el menú lateral -->
+  
+    <!-- Contenedor de la imagen y el nombre -->
+    <div id="profile-container">
+        <!-- Imagen circular -->
+        <img src="img/1.jpg" alt="Imagen Circular" />
+
+        <!-- Nombre -->
+        <h4 class="text-center">Paolo Navarro</h4>
+    </div>
+
+    <!-- Opciones de Menú -->
+    <ul id="menu-options">
+        <li id="selected-option"><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</div>
+
+<div id="main-content">
+    <!-- Sección de Proyectos -->
+    <section id="proyectos">
+        <h2>Proyectos</h2>
+        <p>
+            Aquí puedes destacar algunos de mis proyectos más recientes.
+            Incluyendo detalles como las tecnologías utilizadas, desafíos superados y resultados alcanzados.
+        </p>
+
+        <!-- Proyecto 1: ApiMovie -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">ApiMovie</h3>
+                        <p class="card-text">
+                            Consumo de un API local hecho en Laravel y una API pública omdbapi.
+                            Se utilizó:
+                        </p>
+                        <div class="text-muted">
+                            <span class="me-2" title="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="me-2" title="PHP"><i class="fab fa-php"></i> PHP</span>
+                            <span class="me-2" title="React"><i class="fab fa-react"></i> React</span>
+                            <span class="me-2" title="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
+                            <span class="me-2" title="MySQL"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="me-2" title="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="me-2" title="CSS"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                            <span class="me-2" title="HTML"><i class="fab fa-html5"></i> HTML</span>
+                            
+
+
+                        </div>
+                        <div id="project-carousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://i.ibb.co/mBwKVyM/1.png" class="d-block w-100" alt="Captura 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/m03G2M2/2.png" class="d-block w-100" alt="Captura 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/kmXW6Hz/3.png" class="d-block w-100" alt="Captura 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/BjM7QCR/4.png" class="d-block w-100" alt="Captura 4">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#project-carousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#project-carousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrusel con capturas del proyecto -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">FerreteriaUnicaes</h3>
+                        <p class="card-text">Se uso Laravel para crear un proyecto para invetariado de una ferreteria generica, con una amplia gama de personlizacion en el sofware</p>
+                        <div class="text-muted">
+                            <span class="me-2" title="HTML"><i class="fab fa-html5"></i> HTML</span>
+                            <span class="me-2" title="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="me-2" title="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="me-2" title="CSS"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                            <span class="me-2" title="PHP"><i class="fab fa-php"></i> PHP</span>
+                            <span class="me-2" title="Laravel"><i class="fab fa-laravel"></i> Laravel</span>
+                            <span class="me-2" title="MySQL"><i class="fas fa-database"></i> MySQL</span>
+                            
+                        </div>
+                        <div id="project-carousel1" class="carousel slide" data-bs-ride="carousel1">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://i.ibb.co/1dymWWN/image11.png" class="d-block w-100" alt="Captura 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/YBXg4pY/image18.png" class="d-block w-100" alt="Captura 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/ZSSHbmJ/image29.png" class="d-block w-100" alt="Captura 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/TcGPmdG/image188.png" class="d-block w-100" alt="Captura 2">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#project-carousel1" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#project-carousel1" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Proyecto 3: TiendJSP -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">TiendaJSP</h3>
+                        <p class="card-text">
+                            Se creo una Tienda con JSP,Servelts.
+                        </p>
+                        <div class="text-muted">
+                            <span class="me-2" title="HTML"><i class="fab fa-html5"></i> HTML</span>
+                            <span class="me-2" title="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="me-2" title="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="me-2" title="CSS"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                            <span class="me-2" title="PHP"><i class="fab fa-java"></i> Java</span>
+                            <span class="me-2" title="Laravel"><i class="fab fa-java"></i> JSP</span>
+                            <span class="me-2" title="MySQL"><i class="fas fa-database"></i> MySQL</span>
+                            
+                        </div>
+                        <div id="project-carousel2" class="carousel slide" data-bs-ride="carousel2">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img  src="https://i.ibb.co/Ltg3RjP/captura3.png" class="d-block w-100" alt="Captura 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/c8KTMRH/captura9.png" class="d-block w-100" alt="Captura 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/w4Jchwk/captura1.png" class="d-block w-100" alt="Captura 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/JmMSPHk/captura2.png" class="d-block w-100" alt="Captura 4">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#project-carousel2" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#project-carousel2" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrusel con capturas del proyecto -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">PupuSA</h3>
+                        <p class="card-text">
+                            Se creo una tienda en linea con php y mvc.
+                        </p>
+                        <div class="text-muted">
+                            <span class="me-2" title="HTML"><i class="fab fa-html5"></i> HTML</span>
+                            <span class="me-2" title="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="me-2" title="PHP"><i class="fab fa-php"></i> PHP</span>
+                            <span class="me-2" title="MySQL"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="me-2" title="CSS"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                        </div>
+                        <div id="project-carousel3" class="carousel slide" data-bs-ride="carousel3">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://i.ibb.co/sRrXXnG/captura1.png" class="d-block w-100" alt="Captura 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://i.ibb.co/426bY5s/captura2.png"  class="d-block w-100" alt="Captura 2">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#project-carousel3" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#project-carousel3" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Otras secciones (Skills, Sobre mí, Contacto) -->
+    <section id="skills">
+        <h2>Habilidades</h2>
+        <div class="row">
+            <!-- Primera fila, primera columna -->
+            <div class="col-md-6">
+                <div class="icon-list-container">
+                    <i class="fas fa-code"></i>
+                    <ul>
+                        <li><i class="fab fa-php"></i> PHP</li>
+                        <li><i class="fab fa-java"></i> Java</li>
+                        <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fa-solid fa-hashtag"></i> C#</li>
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Primera fila, segunda columna -->
+            <div class="col-md-6">
+                <div class="icon-list-container">
+                    <i class="fas fa-database"></i>
+                    <ul>
+                        <li><i class="fas fa-database"></i> MySQL</li>
+                        <li><i class="fas fa-database"></i> MariaDB</li>
+                        <li><i class="fas fa-database"></i> Oracle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row">
+            <!-- Segunda fila, primera columna -->
+            <div class="col-md-6">
+                <div class="icon-list-container">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <ul>
+                        <li><i class="fab fa-laravel"></i> Laravel</li>
+                        <li><i class="fab fa-asymmetrik"></i> ASP.NET</li>
+                        <li><i class="fa-solid fa-leaf"></i> Spring Boot</li>
+                        <!-- Agrega más elementos según sea necesario -->
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Segunda fila, segunda columna -->
+            <div class="col-md-6">
+                <div class="icon-list-container">
+                    <i class="fas fa-globe"></i>
+                    <ul>
+                        <li><i class="fab fa-html5"></i>HTML</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS</li>
+                        <li><i class="fab fa-bootstrap"></i> Bootstrap</li>
+                        <li><i class="fa-solid fa-user-tie"></i>Scrum</li>
+                        <!-- Agrega más elementos según sea necesario -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    
+
+    <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <div class="about-me-container">
+            <p>
+                Soy un apasionado desarrollador de software con una sólida formación en programación. 
+                Mi enfoque es crear soluciones eficientes y efectivas para los desafíos tecnológicos. 
+                Disfruto trabajando en proyectos desafiantes y aprendiendo nuevas tecnologías.
+            </p>
+    
+            <div class="additional-info">
+                <p><strong>Formación Académica:</strong> Ingeniería en Desarrollo de Software (4 años completados, en curso).</p>
+                <p><strong>Ubicación:</strong> El Salvador, La Libertad, Ciudad Arce</p>
+                <p><strong>Idiomas:</strong> Español (nativo), Inglés (básico).</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact-info-container">
+            <p>
+                Puedes contactarme a través de mi correo electrónico: <a href="mailto:navarropaolo2020@gmail.com"><i class="fas fa-envelope"></i> navarropaolo2020@gmail.com</a>
+                También estoy disponible en:
+            </p>
+            <ul class="contact-links">
+                <li><a href="https://www.linkedin.com/in/paolo-isaac-navarro-rosales-2024nr" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://github.com/PaoloNavarro" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a></li>
+                <!-- Agrega más enlaces según sea necesario -->
+            </ul>
+            <p>¡Espero con interés colaborar contigo!</p>
+        </div>
+    </section>
+    
+    
+    </div>
+    </div>  
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script>
+            function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const mainContent = document.getElementById("main-content");
+            const menuIcon = document.getElementById("menu-icon");
+
+            const isOpen = sidebar.offsetWidth === 250;
+
+            if (isOpen) {
+                // Si el menú está abierto, ciérralo
+                sidebar.style.width = "0";
+                mainContent.style.marginLeft = "0";
+            } else {
+                // Si el menú está cerrado, ábrelo
+                sidebar.style.width = "250px";
+                mainContent.style.marginLeft = "250px";
+            }
+            
+            // No es necesario ocultar o mostrar el botón aquí
+}
+
+    </script>
+</body>
+
+</html>
