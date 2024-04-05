@@ -62,7 +62,7 @@
                     </h2>
                 </div>
                 <!-- Columna para la imagen -->
-                <div class="col-md-6 text-center">
+                <div class="col-md-6 text-center hide-on-small">
                     <img class="hero-image mx-auto d-block" src="https://i.ibb.co/FwT8Z7g/1-removebg-FULL.png" alt="Portada">
                 </div>
             </div>
@@ -328,7 +328,7 @@
 
     <section id="sobre-mi">
         <h2>Sobre mí</h2>
-        <div class="about-me-container">
+        <div class="">
             <p>
                 Soy un apasionado desarrollador de software con una sólida formación en programación. 
                 Mi enfoque es crear soluciones eficientes y efectivas para los desafíos tecnológicos. 
@@ -345,7 +345,7 @@
     
     <section id="contacto">
         <h2>Contacto</h2>
-        <div class="contact-info-container">
+        <div class="">
             <p>
                 Puedes contactarme a través de mi correo electrónico: <a href="mailto:navarropaolo2020@gmail.com"><i class="fas fa-envelope"></i> navarropaolo2020@gmail.com</a>
                 También estoy disponible en:
@@ -359,14 +359,29 @@
         </div>
     </section>
     
-    
+        <!-- Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl"> <!-- modal-xl para hacerlo grande -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> <!-- Botón de cierre -->
+                    </div>
+                    <div class="modal-body">
+                        <img id="modalImage" src="" class="img-fluid" alt="Modal Image"> <!-- Clase img-fluid para que la imagen sea responsive -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>  
+
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script>
             function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
@@ -387,6 +402,15 @@
             
             // No es necesario ocultar o mostrar el botón aquí
 }
+        // JavaScript para abrir el modal al hacer clic en una imagen del carrusel
+        document.querySelectorAll('.carousel-item img').forEach(item => {
+            item.addEventListener('click', event => {
+                const imageUrl = event.target.src;
+                const modalImage = document.getElementById('modalImage');
+                modalImage.src = imageUrl;
+                $('#imageModal').modal('show');
+            });
+        });
 
     </script>
 </body>

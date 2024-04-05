@@ -1,182 +1,196 @@
 
-    body {
-        display: flex;
-        margin: 0;
-        height: 100vh;
-    }
+        body {
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
 
-    #sidebar {
-        width: 250px;
-        background-color: #333;
-        color: #fff;
-        padding-top: 20px;
-        transition: width 0.5s;
-        height: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centra horizontalmente */
-        justify-content: center; /* Centra verticalmente */
-    }
-    .hero {
-        max-height: 300px; /* Altura máxima */
-        overflow: hidden; /* Ocultar contenido que sobrepase la altura máxima */
-        margin-bottom: 20px;
-    }
-    .hero-image {
-        max-width: 60%; /* Ajusta el tamaño máximo de la imagen */
-        height: auto; /* Altura automática para mantener la proporción */
-        filter: drop-shadow(4px 6px 12px black);
-    }
+        #sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            padding-top: 20px;
+            transition: width 0.5s;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra horizontalmente */
+            justify-content: center; /* Centra verticalmente */
+        }
+        .hero {
+            max-height: 300px; /* Altura máxima */
+            overflow: hidden; /* Ocultar contenido que sobrepase la altura máxima */
+            margin-bottom: 20px;
+        }
+        .hero-image {
+            max-width: 60%; /* Ajusta el tamaño máximo de la imagen */
+            height: auto; /* Altura automática para mantener la proporción */
+            filter: drop-shadow(4px 6px 12px black);
+        }
+      @media (max-width: 768px) {
+            .hide-on-small {
+                display: none; /* Ocultar la imagen en pantallas pequeñas */
+            }
+        }
+        .gradient-background {
+            padding: 20px; /* Ajusta el padding según sea necesario */
+            border-radius: 10px; /* Agrega bordes redondeados si lo deseas */
+        }
+        
+        
+        #sidebar #profile-container {
+            text-align: center;
+            margin-bottom: 20px; /* Espacio entre la imagen y el nombre */
+        }
+        
+        #sidebar #profile-container img {
+            width: 150px;
+            height: 50px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 3px solid rgb(255, 255, 255); /* Borde solo en la parte inferior */
+        }    
+        #sidebar #profile-container h4 {
+            text-align: center;
+            margin: 0; /* Elimina el margen predeterminado del h4 */
+        }
     
-    .gradient-background {
-        padding: 20px; /* Ajusta el padding según sea necesario */
-        border-radius: 10px; /* Agrega bordes redondeados si lo deseas */
-    }
-    
-    
-    #sidebar #profile-container {
-        text-align: center;
-        margin-bottom: 20px; /* Espacio entre la imagen y el nombre */
-    }
-    
-    #sidebar #profile-container img {
-        width: 150px;
-        height: 50px;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        border-bottom: 3px solid rgb(255, 255, 255); /* Borde solo en la parte inferior */
-    }    
-    #sidebar #profile-container h4 {
-        text-align: center;
-        margin: 0; /* Elimina el margen predeterminado del h4 */
-    }
- 
-
-  
-
-    #main-content {
-        flex: 1;
-        transition: margin-left 0.5s;
-        margin-left: 250px;
-    }
-
-    #menu-options {
-        list-style: none;
-        padding: 0;
-        padding-left: 10px;
-
-    }
-
-    #menu-options li {
-        margin-bottom: 10px;
-    }
-
-    #project-icons {
-        font-size: 24px;
-        margin-top: 10px;
-    }
-
-    .card {
-        margin-bottom: 20px;
-    }
-
-    .carousel-inner img {
-        width: 100%;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-
-    /* Ajuste para hacer clic en las imágenes del carrusel */
-    .carousel-inner img:hover {
-        transform: scale(1.1);
-        transition: transform 0.3s ease;
-    }
-
-    #sidebarCollapse {
-        font-size: 24px;
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        z-index: 1;
-    }
-
-    #menu-icon {
-        font-size: 24px;
-        cursor: pointer;
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        z-index: 1;
-        color: #fff;
-    }
+        @media (max-width: 768px) {
+            #sidebar {
+                width: 0;
+            }
+        }
 
     
 
+        #main-content {
+            flex: 1;
+            transition: margin-left 0.5s;
+            margin-left: 250px;
+        }
+        /* Media query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            #main-content {
+                margin-left: 0; /* Cambiar a cero en pantallas pequeñas */
+            }
+        }
+        #menu-options {
+            list-style: none;
+            padding: 0;
+            padding-left: 10px;
 
-    #menu-options a {
-        text-decoration: none;
-        color: #fff;
-    }
+        }
 
-    #menu-options a:hover {
-        color: #fff;
-        text-decoration: underline;
-    }
-    section {
-        margin-top: 20px;
-        border-bottom: 3px solid #ddd; /* Línea divisoria entre secciones */
-        padding-bottom: 20px; /* Espacio entre la sección y la línea divisoria */
-    }
+        #menu-options li {
+            margin-bottom: 10px;
+        }
 
-    section:last-child {
-        border-bottom: none; /* No agregar línea divisoria en la última sección */
-    }
-    .about-me-container {
-        max-width: 800px;
-        margin: auto;
-    }
+        #project-icons {
+            font-size: 24px;
+            margin-top: 10px;
+        }
 
-    .additional-info {
-        margin-top: 20px;
-    }
+        .card {
+            margin-bottom: 20px;
+        }
 
-    .additional-info p {
-        margin: 8px 0;
-    }
+        .carousel-inner img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
-    .additional-info strong {
-        color: #3498db; /* Color azul, puedes ajustarlo según tus preferencias */
-    }
+        /* Ajuste para hacer clic en las imágenes del carrusel */
+        .carousel-inner img:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
 
-    .contact-info-container {
-        max-width: 800px;
-        margin: auto;
-    }
+        #sidebarCollapse {
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
 
-    .contact-links {
-        list-style: none;
-        padding: 0;
-    }
+        #menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 1;
+            color: #fff;
+        }
 
-    .contact-links li {
-        margin-bottom: 10px;
-    }
-
-    .contact-links a {
-        text-decoration: none;
-        color: #333;
-        display: flex;
-        align-items: center;
-    }
-
-    .contact-links a i {
-        font-size: 24px;
-        margin-right: 10px;
-    }
+        
 
 
+        #menu-options a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        #menu-options a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        section {
+            flex: 1;
+            margin-top: 20px;
+            border-bottom: 3px solid #ddd; /* Línea divisoria entre secciones */
+            padding-bottom: 20px; /* Espacio entre la sección y la línea divisoria */
+        }
+
+        section:last-child {
+            border-bottom: none; /* No agregar línea divisoria en la última sección */
+        }
+        .about-me-container {
+            max-width: 800px;
+            margin: auto;
+        }
+    
+        .additional-info {
+            margin-top: 20px;
+        }
+    
+        .additional-info p {
+            margin: 8px 0;
+        }
+    
+        .additional-info strong {
+            color: #3498db; /* Color azul, puedes ajustarlo según tus preferencias */
+        }
+    
+        .contact-info-container {
+            max-width: 800px;
+            margin: auto;
+        }
+    
+        .contact-links {
+            list-style: none;
+            padding: 0;
+        }
+    
+        .contact-links li {
+            margin-bottom: 10px;
+        }
+    
+        .contact-links a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+    
+        .contact-links a i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+       
