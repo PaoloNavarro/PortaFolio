@@ -30,7 +30,6 @@
         max-width: 60%; /* Ajusta el tamaño máximo de la imagen */
         height: auto; /* Altura automática para mantener la proporción */
         filter: drop-shadow(4px 6px 12px black);
-        padding-right: 40px;
     }
     
     .gradient-background {
